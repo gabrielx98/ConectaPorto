@@ -1,0 +1,6 @@
+@ConectaPorto.Api_HostAddress = http://localhost:5253
+
+GET {{ConectaPorto.Api_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
