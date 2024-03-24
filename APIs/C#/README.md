@@ -1,4 +1,4 @@
-# API de Produtos - C#, Entity Framework e Oracle
+# API - C#, Entity Framework e Oracle
 
 Esta é uma API em C# utilizando o framework ASP.NET Core, Entity Framework Core e Oracle Database para realizar operações CRUD (Create, Read, Update, Delete).
 
@@ -21,10 +21,8 @@ Certifique-se de ter o Oracle Data Provider for .NET (ODP.NET) instalado no seu 
 - Oracle Data Provider for .NET
 
 ## Instalação
-- Clone o repositório para o seu ambiente local:
-- git clone https://github.com/seu_usuario/sua_api.git
+- Clone o repositório para o seu ambiente local
 - Instale as dependências do NuGet:
-- dotnet restore
 - Configure a conexão com o banco de dados Oracle no arquivo appsettings.json.
 
 ## Uso
