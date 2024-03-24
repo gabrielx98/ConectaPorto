@@ -4,28 +4,28 @@ Esta é uma API em C# utilizando o framework ASP.NET Core, Entity Framework Core
 
 ## Índice
 
-- [Configuração](##Configuração)
-- [Pré-requisitos](##Pré-requisitos)
-- [Instalação](##Instalação)
-- [Uso](##Uso)
-- [Endpoints](##Endpoints)
-- [Licença](##licença)
+- [Configuração](#configuração)
+- [Pré-requisitos](#pré-requisitos)
+- [Instalação](#instalação)
+- [Uso](#uso)
+- [Endpoints](#endpoints)
+- [Licença](#licença)
 
 
 ## Configuração
 Certifique-se de ter o Oracle Data Provider for .NET (ODP.NET) instalado no seu projeto. Você pode encontrá-lo em [Oracle Data Provider for .NET](https://www.oracle.com/database/technologies/dotnet-odacdeploy-downloads.html).
 
 ## Pré-requisitos
-[.NET Core SDK](https://dotnet.microsoft.com/download)
-Oracle Database
-Oracle Data Provider for .NET
+- [.NET Core SDK](https://dotnet.microsoft.com/download)
+- Oracle Database
+- Oracle Data Provider for .NET
 
 ## Instalação
-Clone o repositório para o seu ambiente local:
-git clone https://github.com/seu_usuario/sua_api.git
-Instale as dependências do NuGet:
-dotnet restore
-Configure a conexão com o banco de dados Oracle no arquivo appsettings.json.
+- Clone o repositório para o seu ambiente local:
+- git clone https://github.com/seu_usuario/sua_api.git
+- Instale as dependências do NuGet:
+- dotnet restore
+- Configure a conexão com o banco de dados Oracle no arquivo appsettings.json.
 
 ## Uso
 Execute o projeto e utilize ferramentas como Postman ou Swagger para testar os endpoints da API.
