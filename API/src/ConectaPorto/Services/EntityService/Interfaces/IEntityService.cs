@@ -10,7 +10,7 @@ namespace ConectaPorto.Services.EntityService.Interfaces
     {
         public Task<IEnumerable<TEntity>> GetAll();
         public Task<TEntity> GetById(object id);
-        public Task<String> Set(TEntity entity);
+        public Task Set(TEntity entity);
         public Task Update(TEntity entity);
         public Task Delete(object id);
     }

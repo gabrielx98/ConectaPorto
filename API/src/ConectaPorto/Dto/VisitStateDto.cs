@@ -11,6 +11,12 @@ namespace ConectaPorto.Dto
 {
     public class VisitStateDto
     {
+        public VisitStateDto() { }
+        public VisitStateDto(VisitState model) {
+            Id = model.Id;
+            Situacao = model.Situacao;
+        }
+
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }

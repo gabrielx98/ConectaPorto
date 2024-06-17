@@ -5,11 +5,18 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ConectaPorto.Models;
 
 namespace ConectaPorto.Dto
 {
     public class TransitStateDto
     {
+        public TransitStateDto() { }
+        public TransitStateDto(TransitState model) {
+            Id = model.Id;
+            Descricao = model.Descricao;
+        }
+
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }

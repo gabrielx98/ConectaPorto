@@ -23,7 +23,7 @@ namespace ConectaPorto.Api.Controllers
         }
 
         [HttpGet(Name = "GetWeatherForecast")]
-        [ApiExplorerSettings(GroupName = "Usuario")]
+        [ApiExplorerSettings(GroupName = "Utilitarios")]
         public IEnumerable<WeatherForecast> Get()
         {
             return _weatherForecast.GerarDados(Summaries);

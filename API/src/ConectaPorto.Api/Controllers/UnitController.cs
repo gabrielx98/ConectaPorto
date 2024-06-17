@@ -10,28 +10,10 @@ namespace ConectaPorto.Api.Controllers
     public class UnitController : ControllerBase
     {
         [HttpGet]
-        [ApiExplorerSettings(GroupName = "Administrador")]
+        [ApiExplorerSettings(GroupName = "Usuario")]
         public Unit Get()
         {
-            return new Unit
-            {
-                Id = 1,
-                Nbr = "",
-                Proprietario = "",
-                Iso = "",
-                Categoria = "",
-                TransitState = "",
-                Transportadora = "",
-                Booking = "",
-                FreightKind = "",
-                CarrierIb = "",
-                CarrierOb = "",
-                UsuarioAlteracao = "",
-                UsuarioCriacao = "",
-                DataAlteracao = "",
-                DataCriacao = ""
-
-            };
+            return new Unit();
         }
     }
 }

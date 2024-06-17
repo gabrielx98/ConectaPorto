@@ -9,9 +9,9 @@ namespace ConectaPorto.Services.BizService.Interfaces
 {
     public interface IClienteBizService
     {
-        public List<Cliente> TodosClientes();
-        public Cliente BuscarCliente(int id);
-        public string CadastrarCliente(Cliente cliente);
+        public Task<List<Cliente>> ListarClientes();
+        public Task<Cliente> BuscarCliente(int id);
+        public Task CadastrarCliente(Cliente cliente);
         public Task AtualizarCliente(Cliente cliente);
         public Task RemoverCliente(int id);
     }

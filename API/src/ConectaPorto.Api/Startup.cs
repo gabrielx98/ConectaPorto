@@ -36,6 +36,7 @@ namespace ConectaPorto.Api
             {
                 c.SwaggerDoc("Usuario", new OpenApiInfo { Title = "Usuario", Version = "v1" });
                 c.SwaggerDoc("Administrador", new OpenApiInfo { Title = "Administrador", Version = "v1" });
+                c.SwaggerDoc("Utilitarios", new OpenApiInfo { Title = "Utilitarios", Version = "v1" });
             });
 
             var connectionString = _configuration.GetConnectionString("OracleConnection");
@@ -60,6 +61,7 @@ namespace ConectaPorto.Api
                 {
                     c.SwaggerEndpoint("/swagger/Usuario/swagger.json", "Usuario");
                     c.SwaggerEndpoint("/swagger/Administrador/swagger.json", "Administrador");
+                    c.SwaggerEndpoint("/swagger/Utilitarios/swagger.json", "Utilitarios");
                 });
             }
 

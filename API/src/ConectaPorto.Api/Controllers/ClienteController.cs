@@ -18,41 +18,41 @@ namespace ConectaPorto.Api.Controllers
             _clienteBizService = clienteBizService;
         }
 
-        [HttpGet("Clientes")]
+        [HttpGet("[action]")]
         [Produces("application/json")]
-        [ApiExplorerSettings(GroupName = "Administrador")]
+        [ApiExplorerSettings(GroupName = "Usuario")]
         [ProducesResponseType(typeof(List<Cliente>), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public List<Cliente> Clientes()
+        public async Task<List<Cliente>> Clientes()
         {
-            var response = _clienteBizService.TodosClientes();
+            var response = await _clienteBizService.ListarClientes();
             return response;
         }
 
-        [HttpGet("Cliente")]
+        [HttpGet("[action]")]
         [Produces("application/json")]
-        [ApiExplorerSettings(GroupName = "Administrador")]
+        [ApiExplorerSettings(GroupName = "Usuario")]
         [ProducesResponseType(typeof(Cliente), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public Cliente Cliente(int id)
+        public async Task<Cliente> Cliente(int id)
         {
-            return _clienteBizService.BuscarCliente(id);
+            return await _clienteBizService.BuscarCliente(id);
         }
 
-        [HttpPost("Cadastrar")]
+        [HttpPost("[action]")]
         [Produces("application/json")]
-        [ApiExplorerSettings(GroupName = "Administrador")]
+        [ApiExplorerSettings(GroupName = "Usuario")]
         [ProducesResponseType(typeof(Cliente), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public string Cadastrar(Cliente cliente)
+        public async Task<ActionResult> Cadastrar(Cliente cliente)
         {
-            var response = _clienteBizService.CadastrarCliente(cliente);
-            return response;
+            await _clienteBizService.CadastrarCliente(cliente);
+            return Ok();
         }
 
-        [HttpPost("Atualizar")]
+        [HttpPost("[action]")]
         [Produces("application/json")]
-        [ApiExplorerSettings(GroupName = "Administrador")]
+        [ApiExplorerSettings(GroupName = "Usuario")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<ActionResult> Atualizar(Cliente cliente)
@@ -61,9 +61,9 @@ namespace ConectaPorto.Api.Controllers
             return Ok();
         }
 
-        [HttpDelete("Remover")]
+        [HttpDelete("[action]")]
         [Produces("application/json")]
-        [ApiExplorerSettings(GroupName = "Administrador")]
+        [ApiExplorerSettings(GroupName = "Usuario")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<ActionResult> Remover(int id)

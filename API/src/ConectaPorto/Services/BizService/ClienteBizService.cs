@@ -18,47 +18,31 @@ namespace ConectaPorto.Services.BizService
             _clienteEntityService = clienteEntityService;
         }
 
-        public List<Cliente> TodosClientes()
+        public async Task<List<Cliente>> ListarClientes()
         {
-            var cliente = _clienteEntityService.GetAll().Result.ToList().OrderBy(cliente => cliente.Id);
-            List<Cliente> lista = new List<Cliente>();
-            foreach (var item in cliente)
+            var clientes = (await _clienteEntityService.GetAll()).ToList().OrderBy(x => x.Id);
+            var result = new List<Cliente>();
+            foreach (var item in clientes)
             {
-                lista.Add(new Cliente
-                {
-                    Id = item.Id,
-                    Nome = item.Nome
-                });
+                result.Add(new Cliente(item));
             }
-            return lista;
+            return result;
         }
 
-        public Cliente BuscarCliente(int id)
+        public async Task<Cliente> BuscarCliente(int id)
         {
-            var cliente = _clienteEntityService.GetById(id).Result;
-            return new Cliente
-            {
-                Id = cliente.Id,
-                Nome = cliente.Nome
-            };
+            var cliente = await _clienteEntityService.GetById(id);
+            return new Cliente(cliente);
         }
 
-        public string CadastrarCliente(Cliente cliente)
+        public async Task CadastrarCliente(Cliente cliente)
         {
-            return _clienteEntityService.Set(new ClienteDto
-            {
-                Nome = cliente.Nome,
-
-            }).Result;
+            await _clienteEntityService.Set(new ClienteDto(cliente));
         }
 
         public async Task AtualizarCliente(Cliente cliente)
         {
-            await _clienteEntityService.Update(new ClienteDto
-            {
-                Id = cliente.Id,
-                Nome = cliente.Nome
-            });
+            await _clienteEntityService.Update(new ClienteDto(cliente));
         }
 
         public async Task RemoverCliente(int id)

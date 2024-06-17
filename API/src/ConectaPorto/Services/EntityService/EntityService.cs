@@ -28,19 +28,10 @@ namespace ConectaPorto.Services.EntityService
             return await _dbSet.FindAsync(id);
         }
 
-        public async Task<String> Set(TEntity entity)
+        public async Task Set(TEntity entity)
         {
-            try
-            {
-                await _dbSet.AddAsync(entity);
-                await _dbContext.SaveChangesAsync();
-                return "Salvo com Sucesso!!!";
-            }
-            catch(Exception ex)
-            {
-                return ex.Message;
-            }
-            
+            await _dbSet.AddAsync(entity);
+            await _dbContext.SaveChangesAsync();
         }
 
         public async Task Update(TEntity entity)
