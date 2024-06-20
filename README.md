@@ -12,26 +12,26 @@ Projeto de Teste utilizando JUnit.
 
 ## Índice
 
-- [Configuração](#configuração)
 - [Pré-requisitos](#pré-requisitos)
 - [Instalação](#instalação)
+- [Configuração](#configuração)
 - [Uso](#uso)
 - [Endpoints](#endpoints)
 - [Licença](#licença)
 
-
-## Configuração
-Certifique-se de ter o Oracle Data Provider for .NET (ODP.NET) instalado no seu projeto. Você pode encontrá-lo em [Oracle Data Provider for .NET](https://www.oracle.com/database/technologies/dotnet-odacdeploy-downloads.html).
-
 ## Pré-requisitos
-- [.NET Core SDK](https://dotnet.microsoft.com/download)
+- IDE Visual Studio
+- .NET Core SDK
+- .NET Framework
 - Oracle Database
 - Oracle Data Provider for .NET
 
 ## Instalação
 - Clone o repositório para o seu ambiente local
-- Instale as dependências do NuGet:
-- Configure a conexão com o banco de dados Oracle no arquivo appsettings.json.
+
+## Configuração
+- Configure a conexão com o banco de dados Oracle no arquivo appsettings.json ou aplique as configurações existentes em seu banco local.
+- Para criação da estrutura do banco utilize o comando 'Update-Database' no Package Manager Console ou 'dotnet ef database update' no terminal.
 
 ## Uso
 Execute os projetos Web e API simultaneamente para utilizar a aplicação ou para realizar testes utilize o projeto de testes.
