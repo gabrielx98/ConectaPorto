@@ -1,6 +1,14 @@
-# API - C#, Entity Framework e Oracle
+# Projeto ConectaPorto
 
-Esta é uma API em C# utilizando o framework ASP.NET Core com Swagger, Entity Framework Core, Oracle Database para realizar operações CRUD (Create, Read, Update, Delete) e JUnit para testes.
+Este é um projeto que contém biblioteca de classes, API, Web e Teste.
+
+Biblioteca de classes utilizando Entity Framework.
+
+Projeto Web utilizando ASP.NET Core, Bootstrap, JavaScript e CSS.
+
+Projeto API utilizando o framework ASP.NET Core com Swagger, migrations e Oracle Database.
+
+Projeto de Teste utilizando JUnit.
 
 ## Índice
 
@@ -26,11 +34,13 @@ Certifique-se de ter o Oracle Data Provider for .NET (ODP.NET) instalado no seu 
 - Configure a conexão com o banco de dados Oracle no arquivo appsettings.json.
 
 ## Uso
-Execute o projeto e utilize ferramentas como Postman ou Swagger para testar os endpoints da API.
+Execute os projetos Web e API simultaneamente para utilizar a aplicação ou para realizar testes utilize o projeto de testes.
 
 ## Endpoints
-
-
+No Swagger foram criadas 3 categorias: 
+- Usuário
+- Administrador
+- Utilitários
 
 ## Licença
 Este projeto é licenciado sob a MIT License.
