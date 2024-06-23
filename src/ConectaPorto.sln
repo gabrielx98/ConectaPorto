@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConectaPorto.Api", "Conecta
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConectaPorto.Testes", "ConectaPorto.Testes\ConectaPorto.Testes.csproj", "{9FDFE6FE-F739-4378-AEB0-14C5AFAF05DD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConectaPorto.Web", "ConectaPorto.Web\ConectaPorto.Web.csproj", "{06E91607-DAFE-4B23-9728-D9C46B04E863}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConectaPorto.Web", "ConectaPorto.Web\ConectaPorto.Web.csproj", "{06E91607-DAFE-4B23-9728-D9C46B04E863}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

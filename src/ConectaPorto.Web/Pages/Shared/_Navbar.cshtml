@@ -1,0 +1,73 @@
+﻿<header>
+    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow pt-0 pb-0 m-0">
+        <div class="container ms-0 ps-0 justify-content-start">
+            <div id="logo" class="border-end">
+                <a class="navbar-brand" asp-area="" asp-page="/Index">ConectaPorto</a>
+            </div>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                <ul class="navbar-nav flex-grow-1">
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" asp-area="" asp-page="#">Agendamento</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" asp-area="" asp-page="#">Gate</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" asp-area="" asp-page="#">Pátio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" asp-area="" asp-page="#">Návio</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle text-dark" data-bs-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Gestor</a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="#">Transportadoras</a>
+                            <a class="dropdown-item" href="#">Clientes</a>
+                            <a class="dropdown-item" href="#">Portos</a>
+                            <a class="dropdown-item" href="#">Viagens</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle text-dark" data-bs-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">Configurações</a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="#">Veiculos de Transporte</a>
+                            <a class="dropdown-item" href="#">Tipos de Frete</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">Tipos de Containeres</a>
+                            <a class="dropdown-item" href="#">Status de Containeres</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">Tipos de Envio</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">Usuários</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">Status de Viagens</a>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" asp-area="" asp-page="/Privacy">Privacy</a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<style>
+
+    #logo {
+        width: 200px;
+        height: 40px;
+       text-align: center;
+       padding-top: 4px;
+    }
+
+    #logo > a {
+        margin: 0;
+        padding: 0;
+    }
+</style>

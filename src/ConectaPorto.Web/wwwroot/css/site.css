@@ -17,6 +17,19 @@ html {
   min-height: 100%;
 }
 
-body {
-  margin-bottom: 60px;
+body{
+    min-height: 100vh;
+}
+
+footer{
+    height: 40px;
+}
+
+.content {
+    margin: 0px;
+    min-height: calc(100vh - 97px);
+}
+
+#sidebar{
+    max-width: 200px;
 }
