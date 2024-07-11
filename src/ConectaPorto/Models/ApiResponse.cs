@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net;
 using System.Text;
 using System.Text.Json;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
@@ -30,7 +31,12 @@ namespace ConectaPorto.Models
             {
                 if (!string.IsNullOrEmpty(response.Content))
                 {
-                    apiResponse.Data = JsonSerializer.Deserialize<T>(response.Content!);
+                    var options = new JsonSerializerOptions
+                    {
+                        DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull,
+                        PropertyNameCaseInsensitive = true
+                    };
+                    apiResponse.Data = JsonSerializer.Deserialize<T>(response.Content!, options);
                 }
             }
             else if (response.StatusCode == HttpStatusCode.BadRequest)
