@@ -1,0 +1,131 @@
+﻿<header>
+    <nav class="navbar navbar-expand navbar-toggleable navbar-light border-bottom box-shadow pt-0 pb-0 m-0">
+        <div class="container-fluid m-0 p-0 ">
+            
+
+            <div class="navMenu">
+                <button type="button" class="border border-info bg-info rounded pt-1 pb-1 p-2" data-bs-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                     <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="dropdown-menu mt-3 ms-3">
+                    <div class="row">
+                        <div class="col">
+                            <h1 class="dropdown-header">Operações</h1>
+                            <div class="dropdown-item">
+                                <i class="fa-solid fa-book"></i>
+                                <a class="text-decoration-none text-black">Agendamento</a>
+                            </div>
+                            <div class="dropdown-item">
+                                <i class="fa-solid fa-truck"></i>
+                                <a class="text-decoration-none text-black">Gate</a>
+                            </div>
+                            <div class="dropdown-item">
+                                <i class="fa-solid fa-warehouse"></i>
+                                <a class="text-decoration-none text-black">Pátio</a>
+                            </div>
+                            <div class="dropdown-item">
+                                <i class="fa-solid fa-ship"></i>
+                                <a class="text-decoration-none text-black">Návio</a>
+                            </div>
+                            <div class="dropdown-item">
+                                <i class="fa-solid fa-box"></i>
+                                <a class="text-decoration-none text-black">Contêineres</a>
+                            </div>
+                        </div>
+                       <div class="col">
+                            <h1 class="dropdown-header"> Gestor</h1>
+                            <div class="dropdown-item">
+                                <i class="fa-solid fa-truck-fast"></i>
+                                <a class="text-decoration-none text-black" asp-controller="Transportadoras" asp-action="Index">Transportadoras</a>
+                            </div>
+                            <div class="dropdown-item">
+                                <i class="fa-solid fa-person"></i>
+                                <a class="text-decoration-none text-black" asp-controller="Clientes" asp-action="Index">Clientes</a>
+                            </div>
+                            <div class="dropdown-item">
+                                <i class="fa-solid fa-globe"></i>
+                                <a class="text-decoration-none text-black" asp-controller="Portos" asp-action="Index">Portos</a>
+                            </div>
+                            <div class="dropdown-item">
+                                <i class="fa-solid fa-truck-plane"></i>
+                                <a class="text-decoration-none text-black" asp-controller="Viagens" asp-action="Index">Viagens</a>
+                            </div>
+                            <div class="dropdown-item">
+                                <i class="fa-solid fa-users"></i>
+                                <a class="text-decoration-none text-black" asp-controller="Usuarios" asp-action="Index">Usuários</a>
+                            </div>
+                       </div>
+                        <div class="col">
+                            <h1 class="dropdown-header"> Configurações</h1>
+                            <div class="dropdown-item">
+                                <i class="fa-solid fa-gears"></i>
+                                <a class="text-decoration-none text-black">Status de Contêineres</a>
+                            </div>
+                            <div class="dropdown-item">
+                                <i class="fa-solid fa-gears"></i>
+                                <a class="text-decoration-none text-black">Tipos de Contêineres</a>
+                            </div>
+                            <div class="dropdown-item">
+                                <i class="fa-solid fa-gears"></i>
+                                <a class="text-decoration-none text-black">Tipos de Frete</a>
+                            </div>
+                            <div class="dropdown-item">
+                                <i class="fa-solid fa-gears"></i>
+                                <a class="text-decoration-none text-black">Tipos de Envio</a>
+                            </div>
+                            <div class="dropdown-item">
+                                <i class="fa-solid fa-gears"></i>
+                                <a class="text-decoration-none text-black">Status de Viagens</a>
+                            </div>
+                            <div class="dropdown-item">
+                                <i class="fa-solid fa-gears"></i>
+                                <a class="text-decoration-none text-black" asp-area="" asp-page="">Veiculos de Transporte</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="navItens form-inline bg-info">
+                <a class="navbar-brand text-white" asp-controller="Home" asp-action="Index"><strong>ConectaPorto</strong></a>
+            </div>
+
+            <div class="navItens form-inline">
+                <span class="align-items-center d-flex badge p-1 ps-3 me-3 bg-info border border-info rounded-pill">
+                    <label class="pe-2" >Gabriel Xavier da Silva</label>
+                    <img class="" width="24" height="24" src="~/account_circle.svg" alt="">
+                </span>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<style>
+
+    nav, footer{
+        background-color: #006494;
+    }
+
+    .navItens {
+        width: 200px;
+        height: 50px;
+       text-align: center;
+       align-content: center;
+    }
+
+    .navItens > a {
+        margin: 0;
+        padding: 0;
+    }
+
+    .navMenu {
+        width: 200px;
+        height: 50px;
+        padding-left: 30px;
+        text-align: left;
+        align-content: center;
+    }
+    
+
+        
+</style>
