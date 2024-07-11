@@ -1,15 +1,26 @@
+
+
+using AspNetCoreHero.ToastNotification;
+using ConectaPorto.Web;
+
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
 builder.Services.AddRazorPages();
+builder.Services.AddHttpContextAccessor();
+builder.Services.AddControllersWithViews().AddRazorRuntimeCompilation();
+
+builder.Services.AddNotyf(x => {
+    x.DurationInSeconds = 10;
+    x.IsDismissable = true;
+    x.Position = NotyfPosition.TopRight;
+});
+RegisterServices.Register(builder.Services);
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Error");
-    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
 
@@ -21,5 +32,11 @@ app.UseRouting();
 app.UseAuthorization();
 
 app.MapRazorPages();
+//app.UseMvc();
+app.UseCookiePolicy();
+
+app.MapControllerRoute(
+    name: "default",
+    pattern: "/{controller=Home}/{action=Index}/");
 
 app.Run();
