@@ -19,10 +19,12 @@ html {
 
 body{
     min-height: 100vh;
+    background-color: #E8F1F2;
 }
 
 footer{
     height: 40px;
+    padding-bottom: 37px;
 }
 
 .content {
