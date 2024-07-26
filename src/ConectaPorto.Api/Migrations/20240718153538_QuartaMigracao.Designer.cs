@@ -3,6 +3,7 @@ using System;
 using ConectaPorto;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Oracle.EntityFrameworkCore.Metadata;
 
@@ -11,9 +12,11 @@ using Oracle.EntityFrameworkCore.Metadata;
 namespace ConectaPorto.Api.Migrations
 {
     [DbContext(typeof(ConectaPortoDbContext))]
-    partial class ConectaPortoDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240718153538_QuartaMigracao")]
+    partial class QuartaMigracao
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

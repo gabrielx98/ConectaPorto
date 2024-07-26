@@ -1,0 +1,38 @@
+﻿@using ConectaPorto.Models;
+@model Cliente
+
+<!-- Modal -->
+<div class="modal fade" id="Editar_@Model.Id" tabindex="-1" role="dialog" aria-labelledby="ModalEditar" aria-hidden="true">
+    <form asp-action="Editar">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="ModalEditar"><strong>Editar</strong></h5>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col form-group" style="display:none;">
+                            <label for="Id" class="form-label text-start">Id:</label>
+                            <input id="Id" name="Id" asp-for="Id" class="form-control" />
+                            <span asp-validation-for="Id" class="text-danger"></span>
+                        </div>
+                        <div class="col form-group">
+                            <label for="Nome" class="form-label text-start">Nome:</label>
+                            <input id="Nome" name="Nome" asp-for="Nome" class="form-control" />
+                            <span asp-validation-for="Nome" class="text-danger"></span>
+                        </div>
+                        <div class="col form-group">
+                            <label for="CNPJ" class="form-label text-start">CNPJ:</label>
+                            <input id="CNPJ" name="CNPJ" asp-for="CNPJ" class="form-control" />
+                            <span asp-validation-for="CNPJ" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Fechar</button>
+                    <button type="submit" class="btn btn-success">Atualizar</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

@@ -45,7 +45,8 @@ namespace ConectaPorto.Models
             }
             else
             {
-                throw new HttpRequestException($"Erro ao fazer a requisição. Status: {response.StatusCode}");
+                //throw new HttpRequestException($"Erro ao fazer a requisição. Status: {response.StatusCode}");
+                apiResponse.Errors.Add("Response", "Não possível realizar operação, tente mais tarde.");
             }
             return apiResponse;
         }

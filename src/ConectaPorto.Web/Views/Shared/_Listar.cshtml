@@ -95,10 +95,16 @@
                             <td class="col-1">
                                 <div class="btn-group" role="group" aria-label="ações">
                                     <a type="button" class="btn btn-danger" title="Excluir" asp-action="Excluir" asp-route-id="@linha.First()"><i class="fa-solid fa-trash"></i></a>
-                                    <a type="button" class="btn btn-primary" title="Editar" asp-action="Editar" asp-route-id="@linha.First()">
+                                    <a type="button" class="btn btn-primary" title="Editar" data-bs-toggle="modal" data-bs-target="#Editar">
                                         <i class="fa-solid fa-pencil"></i>
                                     </a>
-                                </div>
+                                    @{
+                                        var editar = new List<List<string>> ();
+                                        editar.Add(Model.Colunas);
+                                        editar.Add(linha);
+                                    }
+                                    <partial name="_Editar" for="@editar"/>
+                                </div> 
                             </td>
                         </tr>
                     }

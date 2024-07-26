@@ -9,6 +9,6 @@ namespace ConectaPorto.Services.EntityService.Interfaces
 {
     public interface IClienteEntityService : IEntityService<ClienteDto>
     {
-        public Task<IEnumerable<ClienteDto>> GetByCNPJ(int cnpj);
+        public Task<IEnumerable<ClienteDto>> GetByCNPJ(long cnpj);
     }
 }

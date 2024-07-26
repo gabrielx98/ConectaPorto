@@ -18,7 +18,7 @@ namespace ConectaPorto.Services.EntityService
             _dbSet = dbContext.Set<ClienteDto>();
         }
 
-        public async Task<IEnumerable<ClienteDto>> GetByCNPJ(int cnpj)
+        public async Task<IEnumerable<ClienteDto>> GetByCNPJ(long cnpj)
         {
             return await _dbSet.AsQueryable().Where(x => x.CNPJ == cnpj).ToListAsync();
         }

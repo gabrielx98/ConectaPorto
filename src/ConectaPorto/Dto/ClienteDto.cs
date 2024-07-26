@@ -21,7 +21,7 @@ namespace ConectaPorto.Dto
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
-        public int CNPJ { get; set; }
+        public long CNPJ { get; set; }
         public string Nome { get; set; }
     }
 }

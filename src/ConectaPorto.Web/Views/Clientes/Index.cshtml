@@ -1,5 +1,203 @@
-﻿@using ConectaPorto.Web.ViewModel;
+﻿@using ConectaPorto.Web.Extensions
+@using ConectaPorto.Web.ViewModel;
 @using ConectaPorto.Models;
-@model ConectaPorto.Web.ViewModel.ListarViewModel;
+@model PaginacaoExtension<Cliente>;
 
-<partial name="_Listar" model="@Model"/>
+<div class="card mt-3 ">
+    <div class="card-header bg-white">
+        <div class="row justify-content-between align-items-center flex-grow-1">
+            <div class="col-md">
+                <div class="d-flex justify-content-between align-items-center">
+                    <h4 class="card-header-title m-0">Clientes</h4>
+                </div>
+            </div>
+
+            <div class="col-auto">
+                <!-- Filter -->
+                
+                <div class="row align-items-sm-center">
+                    <div class="col-sm-auto">
+                        <div class="row align-items-center gx-0">
+                            <div class="col">
+                                <span class="text-secondary me-2">Coluna:</span>
+                            </div>
+                            <!-- End Col -->
+
+                            <div class="col-auto">
+                                <!-- Select -->
+                                <div>
+                                    <select id="filtroColuna" class="form-select form-select form-select-borderless " data-target-column-index="2" data-target-table="datatable" autocomplete="off">
+                                        <option value="null" selected>Todas</option>
+                                        <option value="Id">Id</option>
+                                        <option value="CNPJ">CNPJ</option>
+                                        <option value="Nome">Nome</option>
+
+                                    </select>
+                                </div>
+                                <!-- End Select -->
+                            </div>
+                            <!-- End Col -->
+                        </div>
+                        <!-- End Row -->
+                    </div>
+                    <!-- End Col -->
+
+                    <div class="col-md">
+                        <!-- Search -->
+                        <div class="input-group input-group-merge input-group-flush">
+                            <input id="filtroValor" type="search" class="form-control" placeholder="Filtrar" aria-label="Filtrar">
+                            <div class="input-group-prepend input-group-text">
+                                <button class="btn btn-sm" type="button" onclick="filtrar()"><i class="fa-solid fa-search"></i></button>
+                            </div>
+                        </div>
+                        <!-- End Search -->
+                    </div>
+                    <div class="col-1 me-3">
+                        <!-- Search -->
+                        <a type="button" class="btn btn-success" title="Exportar" asp-action="Exportar"><i class="fa-solid fa-file-excel"></i></a>
+                        <!-- End Search -->
+                    </div>
+                    <!-- End Col -->
+                </div>
+                
+                <!-- End Filter -->
+            </div>
+            <!-- End Col -->
+        </div>
+    </div>
+
+    <div class="card-body p-0">
+        <div class="table-responsive">
+            <table class="table table-hover mb-0">
+                <thead class="table-secondary">
+                    <tr>
+                        <th class="col-1 text-center">
+                            <input id="check_todos" class="form-check-input" type="checkbox" />
+                        </th>
+
+                        <th class="col text-center">Id</th>
+                        <th class="col text-center">CNPJ</th>
+                        <th class="col text-center">Nome</th>
+                        <th class="col-1 text-center">
+                            <span>Ações</span>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var cliente in Model.Values)
+                    {
+                        <tr>
+                            <td class="col-1 text-center">
+                                <input id="check_@cliente.Id" class="form-check-input" type="checkbox" />
+                            </td>
+
+
+                            <td class="col text-center">@cliente.Id</td>
+                            <td class="col text-center">@cliente.CNPJ</td>
+                            <td class="col text-center">@cliente.Nome</td>
+
+                            <td class="col-1 text-center">
+                                <div class="btn-group" role="group" aria-label="ações">
+                                    <a type="button" class="btn btn-danger" title="Excluir" asp-action="Excluir" asp-route-id="@cliente.Id"><i class="fa-solid fa-trash"></i></a>
+                                    <a class="btn btn-primary" title="Editar" data-bs-toggle="modal" data-bs-target="#Editar_@cliente.Id">
+                                        <i class="fa-solid fa-pencil"></i>
+                                    </a>
+                                </div>
+                            </td>
+                            <partial name="_Editar" for="@cliente" />
+                        </tr>
+                    }
+
+
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="card-footer">
+        <!-- Pagination -->
+        <div class="row justify-content-center justify-content-between align-items-center mt-2">
+
+            <div class="col mb-2">
+                <div class="d-flex justify-content-start align-items-center">
+                    <span class="me-2">Mostrar:</span>
+
+                    <!-- Select -->
+                    <div>
+                        <select id="maxLinhas" class="form-select " onchange="atualizarItensPorPagina()">
+                            @foreach (var item in new int[] { 2, 4, 6, 8 })
+                            {
+                                if(Model.ItensPorPagina == item)
+                                {
+                                    <option value="@item" selected>@item</option>
+                                }else{
+                                    <option value="@item">@item</option>
+                                }
+                            }
+                        </select>
+                    </div>
+                    <!-- End Select -->
+                    <span class="text-secondary me-2 ms-2">de @Model.TotalItens</span>
+                </div>
+            </div>
+            <!-- End Col -->
+
+            <div class="col mb-2">
+                <div class="d-flex justify-content-end align-items-center">
+                    <!-- Pagination -->
+                    <nav aria-label="..." class="bg-light">
+                        <ul class="pagination m-0 align-items-center">
+
+                            <li class="page-item @(Model.PaginaAtual <= 1 ? "disabled" : "")">
+                                <a class="page-link" href="@Url.Action("Index", new { pagina = Model.PaginaAtual - 1, qtdItens = Model.ItensPorPagina })">Anterior</a>
+                            </li>
+                            @for (var i = 1; i <= Model.TotalPaginas; i++)
+                            {
+                                <li class="page-item @(Model.PaginaAtual == @i ? "active" : "")">
+                                    <a class="page-link" href="@Url.Action("Index", new { pagina = @i, qtdItens = Model.ItensPorPagina })">@i</a>
+                                </li>
+                            }
+                            <li class="page-item @(Model.PaginaAtual >= Model.TotalPaginas ? "disabled" : "")">
+                                <a class="page-link" href="@Url.Action("Index", new { pagina = Model.PaginaAtual + 1, qtdItens = Model.ItensPorPagina })">Próximo</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+            <!-- End Col -->
+        </div>
+        <!-- End Pagination -->
+    </div>
+</div>
+
+<style>
+    th {
+        border-style: none;
+    }
+
+    td {
+        align-content: baseline;
+    }
+</style>
+
+@section Scripts {
+    <script type="text/javascript">
+        function atualizarItensPorPagina() {
+            var itensPorPagina = document.getElementById("maxLinhas").value;
+            var url = '@Url.Action("Index", new { qtdItens = 0 })'.replace('0', itensPorPagina)
+            window.location.href = url;
+        }
+        function filtrar() {
+            var coluna = document.getElementById("filtroColuna").value;
+            console.log(coluna)
+            var valor = document.getElementById("filtroValor").value;
+            console.log(valor)
+            var itensPorPagina = document.getElementById("maxLinhas").value;
+            var url = '@Url.Action("Filtrar", new {filtroCampo = "1", filtroValor = "2", teste = "3"})'
+                //.replace('1', coluna)
+                //.replace('2', valor)
+                console.log(url)
+            window.location.href = url;
+        }
+    </script>
+}

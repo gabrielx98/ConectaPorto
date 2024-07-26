@@ -1,6 +1,7 @@
 ﻿using ConectaPorto.Dto;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,7 +18,8 @@ namespace ConectaPorto.Models
         }
 
         public int Id { get; set; }
-        public int CNPJ { get; set; }
+        [Range(00000000000, 99999999999, ErrorMessage = "Número Máximo de 11 digitos.")]
+        public long CNPJ { get; set; }
         public string Nome { get; set; }
         
     }
