@@ -20,6 +20,6 @@ namespace ConectaPorto.Models
         public int Id { get; set; }
         public string Cicla { get; set; }
         public string Nome { get; set; }
-        public int CNPJ { get; set; }
+        public long CNPJ { get; set; }
     }
 }

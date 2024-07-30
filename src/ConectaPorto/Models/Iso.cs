@@ -14,10 +14,14 @@ namespace ConectaPorto.Models
             Id = dto.Id;
             Codigo = dto.Codigo;
             Descricao = dto.Descricao;
+            Tamanho = dto.Tamanho;
+            Tipo = dto.Tipo;
         }
 
         public int Id { get; set; }
-        public string Codigo { get; set; }
+        public int Codigo { get; set; }
+        public int Tamanho { get; set; }
+        public string Tipo { get; set; }
         public string Descricao { get; set; }
     }
 }
