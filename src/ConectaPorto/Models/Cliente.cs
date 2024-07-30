@@ -18,7 +18,7 @@ namespace ConectaPorto.Models
         }
 
         public int Id { get; set; }
-        [Range(00000000000, 99999999999, ErrorMessage = "Número Máximo de 11 digitos.")]
+        [Range(00000000000, 99999999999, ErrorMessage = "Número Máximo de 14 digitos.")]
         public long CNPJ { get; set; }
         public string Nome { get; set; }
         
