@@ -126,10 +126,16 @@ namespace ConectaPorto.Api.Migrations
 
                     OraclePropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("Codigo")
-                        .HasColumnType("NVARCHAR2(2000)");
+                    b.Property<int>("Codigo")
+                        .HasColumnType("NUMBER(10)");
 
                     b.Property<string>("Descricao")
+                        .HasColumnType("NVARCHAR2(2000)");
+
+                    b.Property<int>("Tamanho")
+                        .HasColumnType("NUMBER(10)");
+
+                    b.Property<string>("Tipo")
                         .HasColumnType("NVARCHAR2(2000)");
 
                     b.HasKey("Id");
@@ -183,8 +189,8 @@ namespace ConectaPorto.Api.Migrations
 
                     OraclePropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("CNPJ")
-                        .HasColumnType("NUMBER(10)");
+                    b.Property<long>("CNPJ")
+                        .HasColumnType("NUMBER(19)");
 
                     b.Property<string>("Cicla")
                         .HasColumnType("NVARCHAR2(2000)");
@@ -280,8 +286,8 @@ namespace ConectaPorto.Api.Migrations
 
                     OraclePropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("CPF")
-                        .HasColumnType("NUMBER(10)");
+                    b.Property<long>("CPF")
+                        .HasColumnType("NUMBER(19)");
 
                     b.Property<string>("Email")
                         .HasColumnType("NVARCHAR2(2000)");
