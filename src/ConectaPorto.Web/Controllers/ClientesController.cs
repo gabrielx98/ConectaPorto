@@ -13,9 +13,11 @@ namespace ConectaPorto.Web.Controllers
         private readonly IClienteRepository _clienteRepository;
         private readonly INotyfService _notyfService;
         /*
-         filtro
+         * refazer modal editar para pagina
         exportar - checkbox
         cadastro
+        criar botão para habilitar/desabilitar coluna id na tabela e no filtro
+        ordenar
          */
         public ClientesController(IClienteRepository clienteRepository, INotyfService notyfService)
         {
@@ -23,21 +25,32 @@ namespace ConectaPorto.Web.Controllers
             _notyfService = notyfService;
         }
 
-        public async Task<IActionResult> Index(int pagina = 1, int qtdItens = 4,string filtroCampo = null,string filtroValor = null)
+        public async Task<IActionResult> Index(int pagina = 1, int qtdItens = 4,string colunaFiltro = null,string valorFiltro = null)
         {
             var dados = (await _clienteRepository.ObterClientes());
             
             if (dados.HasErrors)
             {
-                _notyfService.Error(dados.Errors.Values.First(), 10);
+                //_notyfService.Error(dados.Errors.Values.First(), 10);
+                //_notyfService.Error(dados.ValidationProblemDetails.Errors.First().Value.First(), 10);
                 return RedirectToAction("Index","Home");
             }
 
-            return View("Index", new PaginacaoExtension<Cliente>().Paginar(dados.Data, pagina, qtdItens, filtroCampo, filtroValor));
+            return View("Index", new ClienteViewModel().Paginar(dados.Data, pagina, qtdItens, colunaFiltro, valorFiltro));
         }
-        public Task<IActionResult> Filtrar(string filtroCampo, string filtroValor)
+
+        [HttpPost]
+        public Task<IActionResult> Filtrar(ClienteViewModel view)
         {
-            return Index();
+            if(view.ColunaFiltro == null)
+            {
+                _notyfService.Error("Selecione uma coluna para filtrar", 10);
+            }
+            else if (view.ValorFiltro == null)
+            {
+                _notyfService.Error("Insira um valor para filtrar", 10);
+            }
+            return Index(colunaFiltro: view.ColunaFiltro, valorFiltro: view.ValorFiltro );
         }
 
         public Task<IActionResult> Exportar()
@@ -52,11 +65,27 @@ namespace ConectaPorto.Web.Controllers
             _notyfService.Custom($"{dados.Nome} Cadastrado!!!", 10, "blue", "fa fa-pencil");
             return await Index();
         }
+        public async Task<IActionResult> Editar()
+        {
+            return View();
+        }
 
         public async Task<IActionResult> Editar(Cliente cliente)
         {
             var response = (await _clienteRepository.AtualizarCliente(cliente));
-            _notyfService.Custom($"Editado!!!", 10, "blue", "fa fa-pencil");
+            if (response.HasErrors) {
+                foreach(var errors in response.ValidationProblemDetails.Errors)
+                {
+                    foreach(var error in errors.Value)
+                    {
+                        _notyfService.Error($"{errors.Key} : {error}", 10);
+                    }
+                }
+            }
+            else
+            {
+               _notyfService.Custom($"Editado!!!", 10, "blue", "fa fa-pencil");
+            }
             return await Index();
         }
 

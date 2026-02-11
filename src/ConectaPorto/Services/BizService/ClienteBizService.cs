@@ -43,7 +43,7 @@ namespace ConectaPorto.Services.BizService
         {
             var apiResponse = new ApiResponse<Cliente>();
             var verificaId = await _clienteEntityService.GetById(cliente.Id);
-            var verificaCnpj = await _clienteEntityService.GetByCNPJ(cliente.CNPJ);
+            var verificaCnpj = await _clienteEntityService.GetByCNPJ(long.Parse(cliente.CNPJ));
             if(verificaId != null)
             {
                 apiResponse.Errors.Add("id", "Identificador já cadastrado");

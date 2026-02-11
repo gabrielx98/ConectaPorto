@@ -1,0 +1,56 @@
+dotnet ef migrations add PrimeiraMigracao -o ..\ConectaPorto\Migrations
+
+dotnet ef database update
+
+dotnet ef migrations add InitialCreate --output-dir  ..\ConectaPorto\Migrations
+
+dotnet ef migrations add QuartaMigracao -o ..\ConectaPorto\Migrations
+
+------------------------------------------------------------------------
+
+SYS, SYSTEM, PDBADMIN.
+sysdba, sysoper
+
+senha: admin
+
+USER/SENHA: CONECTAPORTO
+
+------------------------------------------------------------------------
+
+colocar no front uma tela de cadastrar mais de 1 por vez
+
+metodos ativar/inativar/cancelar usa metodo http patch
+head
+options
+patch
+put
+
+------------------------------------------------------------------------
+
+#conteiner (unit):
+id
+codigo -> KDSU486774-2
+categoria -> import,  export, domestic, storage, through, transship
+Freight Kind -> BBK(break bulk - fora de conteiner), FCL (cheio total), LCL (cheio parcial), MTY (Vazio)
+tamanho -> 20 e 40
+tipos -> dry e reefer (ligado desligado)
+booking -> aaaaa0000000 - aaa(cicla armador) aa(cicla pais)
+transit state -> advised, inbound, ecin, yard, ecout, loaded. departed, outbound , retired
+Viagem entrada (IB) : inbound carrier visit : transportadora
+Viagem saida (OB) : outbound carrier visit : transportadora
+Cliente : shipper
+?posição
+TRANSPORTADORA : shipowner -> maersk, hapag-lhoyd, msc, hamburg sud, aliança, evergreen 
+
+#Viagem (carrier):
+id
+código -> truck0001 - vessel0001 - train0001
+visit state -> active, departed , advised, retired
+data partida
+local partida: porto
+data chegada
+local chegada: porto
+veiculo de transporte: trem, navio, caminhão
+
+------------------------------------------------------------------------
+

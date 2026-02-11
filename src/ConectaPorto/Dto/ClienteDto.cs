@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ConectaPorto.Models;
+using ConectaPorto.Formatadores;
 
 namespace ConectaPorto.Dto
 {
@@ -15,7 +16,7 @@ namespace ConectaPorto.Dto
         public ClienteDto(Cliente model) {
             Id = model.Id;
             Nome = model.Nome;
-            CNPJ = model.CNPJ;
+            CNPJ = CnpjFormatador.RetirarMascara(model.CNPJ);
         }
 
         [Key]

@@ -20,8 +20,8 @@ namespace ConectaPorto.Models
         }
         public T Data { get; set; }
         public Dictionary<string, string> Errors { get; set; }
-        //public ValidationProblemDetails ValidationProblemDetails { get; private set; }
-        public bool HasErrors => Errors.Any();
+        public ValidationProblemDetails ValidationProblemDetails { get; set; }
+        public bool HasErrors => ValidationProblemDetails != null;
 
         public static ApiResponse<T> Create(RestResponse response)
         {
@@ -41,18 +41,21 @@ namespace ConectaPorto.Models
             }
             else if (response.StatusCode == HttpStatusCode.BadRequest)
             {
-                //apiResponse.ValidationProblemDetails = JsonSerializer.Deserialize<ValidationProblemDetails>(response.Content!);
+                apiResponse.ValidationProblemDetails = JsonSerializer.Deserialize<ValidationProblemDetails>(response.Content!);
+                //apiResponse.Errors.Add(message.Keys,message.Values);
             }
             else
             {
                 //throw new HttpRequestException($"Erro ao fazer a requisição. Status: {response.StatusCode}");
-                apiResponse.Errors.Add("Response", "Não possível realizar operação, tente mais tarde.");
+                apiResponse.ValidationProblemDetails = new ValidationProblemDetails();
+                apiResponse.ValidationProblemDetails.Errors.Add("API", ["Não possível realizar operação, tente mais tarde."]);
+                //apiResponse.ValidationProblemDetails.Errors.Add("Response", ["Não possível realizar operação, tente mais tarde."]);
             }
             return apiResponse;
         }
 
-
-        /*public void CopyErrorsTo(ModelStateDictionary modelState)
+        /*
+        public void CopyErrorsTo(ModelStateDictionary modelState)
         {
             if (ValidationProblemDetails.Errors != null && ValidationProblemDetails.Errors.Any())
             {
